@@ -34,7 +34,9 @@ class Smurf extends Component {
             <CardText>{this.props.height} tall</CardText>
             <CardText>{this.props.age} smurf years old</CardText>
           </CardBody>
-          <Button onClick={() => this.deleteSmurf(this.props.id)}>Delete</Button>
+          <Button onClick={() => this.deleteSmurf(this.props.id)}>
+            Delete
+          </Button>
         </Card>
       </div>
     );
