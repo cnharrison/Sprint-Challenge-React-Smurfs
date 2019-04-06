@@ -27,6 +27,7 @@ class SmurfForm extends Component {
           age: "",
           height: ""
         });
+        this.props.history.push("/");
       })
       .catch(err => console.log(err));
   };

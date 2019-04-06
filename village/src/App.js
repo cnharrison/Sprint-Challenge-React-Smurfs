@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
-import Nav from "./components/Nav"
+import myNav from "./components/Nav"
 
 import axios from "axios";
 import { Route } from "react-router-dom";
@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Route path="/" component={Nav}/>
+      <Route path="/" component={myNav}/>
         <Route
           exact
           path="/"
