@@ -1,27 +1,50 @@
-import React from 'react';
+import React, { Component } from "react";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from "reactstrap";
+import axios from "axios";
 
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+class Smurf extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-const Smurf = props => {
-  return (
-    <div className="Smurf">
-    <Card>
-      <CardBody>
-      <CardTitle>{props.name}</CardTitle>
-      <CardText>{props.height} tall</CardText>
-      <CardText>{props.age} smurf years old</CardText>
-      </CardBody>
-      </Card>
-    </div>
-  );
-};
+  deleteSmurf = id => {
+    // add code to create the smurf using the api
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        this.props.updateSmurfs(response.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <div className="Smurf">
+        <Card>
+          <CardBody>
+            <CardTitle>{this.props.name}</CardTitle>
+            <CardText>{this.props.height} tall</CardText>
+            <CardText>{this.props.age} smurf years old</CardText>
+          </CardBody>
+          <Button onClick={() => this.deleteSmurf(this.props.id)}>Delete</Button>
+        </Card>
+      </div>
+    );
+  }
+}
 
 Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
+  name: "",
+  height: "",
+  age: ""
 };
 
 export default Smurf;
-
